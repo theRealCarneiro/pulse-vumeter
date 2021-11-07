@@ -1,5 +1,6 @@
 include config.mk
 
+PREFIX = /usr/local
 SRC=$(wildcard *.c)
 OBJ=$(SRC:.c=.o)
 
@@ -17,8 +18,14 @@ $(EXEC): $(OBJ)
 %.o: %.c
 	$(CC) -o $@ -c $< $(CFLAGS)
 
+install: $(EXEC)
+	install -Dm755 pulse-vumeter $(DESTDIR)/$(PREFIX)/bin/pulse-vumeter
+
+uninstall:
+	rm $(DEST_DIR)/$(PREFIX)/bin/pulse-vumeter
+
 clean:
-	rm -fv *.o
+	rm -fv *.o $(EXEC)
 
 mrproper: clean
 	rm -fv $(EXEC)

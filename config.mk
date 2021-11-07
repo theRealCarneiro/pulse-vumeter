@@ -1,4 +1,4 @@
-EXEC = pulse-console
+EXEC = pulse-vumeter
 
 # flags
 CFLAGS  = -std=gnu99 -W -Wall -O2
