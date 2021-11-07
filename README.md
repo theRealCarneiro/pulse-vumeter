@@ -5,9 +5,9 @@ Source code is based on [pulse-meter](https://github.com/maxux/pulse-meter.git) 
 ## Dependencies
 
 - libpulse
- - Ubuntu: libpulse-dev
- - Arch: libpulse
- - Fedora: libpulse
+  - Ubuntu: libpulse-dev
+  - Arch: libpulse
+  - Fedora: libpulse
 
 ## How to
 
