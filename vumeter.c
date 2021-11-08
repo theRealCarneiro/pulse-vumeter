@@ -57,7 +57,7 @@ static void stream_read_callback(pa_stream *s, size_t length, void *dummy) {
 	float v = 0;
 
 	for(unsigned int i = 1; i < samples; i++){
-		v += data[i] * data[i];
+		/*v += data[i] * data[i];*/
 		v += fabs(data[i]); // * data[i];
 	}
 	v = v / samples;
@@ -67,7 +67,8 @@ static void stream_read_callback(pa_stream *s, size_t length, void *dummy) {
 
 	if (dbRMS <= v)
 		dbRMS = (0.1 * dbRMS + 0.9 * v);
-	else dbRMS -= .025;
+		/*dbRMS = v;*/
+	/*else dbRMS -= .025;*/
 
 	if (dbRMS > 1)
 		dbRMS = 1;
@@ -171,6 +172,8 @@ void *print_dbrms_thread( ){
 		usleep(33000);
 		fflush(stdout);
 		printf("%.2f\n", dbRMS);
+		if (dbRMS - 0.04 >= 0)
+			dbRMS -= 0.04;
 	}
 }
 
